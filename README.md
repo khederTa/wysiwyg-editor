@@ -76,7 +76,7 @@ The editor supports the following keyboard shortcuts:
 
 ## Project Structure
 
-![WYSIWYG Editor Screenshot](/project-structure.png)
+![WYSIWYG Editor Screenshot](/public/project_structure.png)
 
 ---
 
