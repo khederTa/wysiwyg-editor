@@ -22,6 +22,7 @@ const WysiwygEditor: React.FC<WysiwygEditorProps> = ({
     EditorState.createEmpty()
   );
 
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [message, setMessage] = useState<string | null>(null);
   const [isError, setIsError] = useState<boolean>(false);
 
@@ -30,15 +31,13 @@ const WysiwygEditor: React.FC<WysiwygEditorProps> = ({
   const handleEditorChange = useCallback(
     (state: EditorState) => {
       if (onChange) {
-        onChange(state); 
+        onChange(state);
       } else {
         setInternalState(state);
       }
     },
     [onChange]
   );
-
-  
 
   const keyBindingFn = useCallback((e: React.KeyboardEvent) => {
     if (KeyBindingUtil.hasCommandModifier(e)) {
@@ -65,7 +64,8 @@ const WysiwygEditor: React.FC<WysiwygEditorProps> = ({
   );
 
   const saveContent = useCallback(async () => {
-    const content = editorState.getCurrentContent().getPlainText(); 
+    setIsLoading(true);
+    const content = editorState.getCurrentContent().getPlainText();
     try {
       const response = await fetch("https://dummyjson.com/products/add", {
         method: "POST",
@@ -81,11 +81,13 @@ const WysiwygEditor: React.FC<WysiwygEditorProps> = ({
 
       const result = await response.json();
       setIsError(false);
-      setMessage(result.msg || "Content saved successfully"); 
+      setMessage(result.msg || "Content saved successfully");
     } catch (error) {
       console.error("Error saving content:", error);
       setIsError(true);
-      setMessage("Failed to save content"); 
+      setMessage("Failed to save content");
+    } finally {
+      setIsLoading(false);
     }
   }, [editorState]);
 
@@ -95,13 +97,10 @@ const WysiwygEditor: React.FC<WysiwygEditorProps> = ({
         editorState={editorState}
         onToggle={handleToggleStyle}
         renderToolbar={renderToolbar}
-        theme={theme?.toolbarButton} 
+        theme={theme?.toolbarButton}
       />
 
-      <div
-        className="editor-container"
-        style={theme?.editorContainer} 
-      >
+      <div className="editor-container" style={theme?.editorContainer}>
         <Editor
           editorState={editorState}
           onChange={handleEditorChange}
@@ -113,7 +112,8 @@ const WysiwygEditor: React.FC<WysiwygEditorProps> = ({
         <button
           className="submit-btn"
           onClick={saveContent}
-          style={theme?.submitButton} 
+          disabled={isLoading}
+          style={theme?.submitButton}
         >
           Save Fake Post
         </button>

@@ -103,13 +103,13 @@
 
 /* Submit Button */
 .submit-btn {
-  border: none;
   background-color: var(--submit-btn-bg);
   padding: var(--submit-btn-padding);
   color: var(--submit-btn-color);
-  border-radius: var(--submit-btn-radius);
   transition: var(--submit-btn-transition);
   margin-bottom: 10px;
+  border: 1px solid var(--submit-btn-bg);
+  border-radius: var(--submit-btn-radius);
 }
 
 .submit-btn:hover {
