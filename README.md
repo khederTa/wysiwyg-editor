@@ -12,6 +12,7 @@ A reusable and flexible WYSIWYG Editor component built with React, TypeScript, a
 - **Customizable Toolbar**:
   - Default toolbar with **Bold**, *Italic*, and <u>Underline</u> formatting options.
   - Extend the toolbar using the `renderToolbar` prop.
+- **Custom theme for styling toolbar buttons, editor container, and submit button.**
 - **Keyboard Shortcuts**:
   - `Ctrl + B` for Bold.
   - `Ctrl + I` for Italic.
@@ -75,7 +76,7 @@ The editor supports the following keyboard shortcuts:
 
 ## Project Structure
 
-![WYSIWYG Editor Screenshot](./public/project-structure.png)
+![WYSIWYG Editor Screenshot](/project-structure.png)
 
 ---
 
