@@ -1,0 +1,146 @@
+:root {
+  /* General Editor */
+  --editor-bg: #fff;
+  --editor-border: #ddd;
+  --editor-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --editor-radius: 5px;
+  --editor-padding: 10px;
+  --editor-min-height: 150px;
+
+  /* Toolbar */
+  --toolbar-bg: #f4f4f4;
+  --toolbar-border: #ddd;
+  --toolbar-gap: 5px;
+  --toolbar-padding: 5px;
+  --toolbar-button-bg: #e0e0e0;
+  --toolbar-button-hover-bg: #d6d6d6;
+  --toolbar-button-active-bg: #bbb;
+  --toolbar-button-radius: 3px;
+  --toolbar-button-padding: 5px 10px;
+  --toolbar-button-font-size: 14px;
+
+  /* Controlled/Uncontrolled */
+  --controlled-border: 2px solid rgba(32, 30, 30, 0.35);
+  --uncontrolled-border: 2px solid #000000;
+
+  /* Submit Button */
+  --submit-btn-bg: rgb(32, 30, 30);
+  --submit-btn-color: white;
+  --submit-btn-hover-bg: white;
+  --submit-btn-hover-color: rgb(32, 30, 30);
+  --submit-btn-padding: 8px 16px;
+  --submit-btn-radius: 5px;
+  --submit-btn-transition: 0.3s;
+
+  /* Messages */
+  --success-color: #41b445;
+  --error-color: rgb(194, 74, 74);
+  --message-padding: 8px 10px;
+  --message-radius: 5px;
+  --message-bg: rgba(0, 0, 0, 0.05);
+}
+
+/* General Editor Styles */
+.wysiwyg-editor {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--editor-bg);
+  border-radius: var(--editor-radius);
+  box-shadow: var(--editor-shadow);
+}
+
+.editor-container {
+  padding: var(--editor-padding);
+  border-top: 1px solid var(--editor-border);
+  min-height: var(--editor-min-height);
+  cursor: text;
+}
+
+.editor-container:focus {
+  border-color: #2196f3;
+  box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.2);
+}
+
+/* Toolbar Styles */
+.toolbar {
+  display: flex;
+  gap: var(--toolbar-gap);
+  padding: var(--toolbar-padding);
+  background-color: var(--toolbar-bg);
+  border-bottom: 1px solid var(--toolbar-border);
+  align-items: center;
+}
+
+.toolbar-button {
+  background-color: var(--toolbar-button-bg);
+  border: none;
+  padding: var(--toolbar-button-padding);
+  border-radius: var(--toolbar-button-radius);
+  font-size: var(--toolbar-button-font-size);
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.toolbar-button:hover {
+  background-color: var(--toolbar-button-hover-bg);
+  transform: scale(1.05);
+}
+
+.toolbar-button.active {
+  background-color: var(--toolbar-button-active-bg);
+  font-weight: bold;
+  color: #000;
+}
+
+/* Controlled and Uncontrolled Editor Styles */
+.controlled-editor {
+  border: var(--controlled-border);
+}
+
+.uncontrolled-editor {
+  border: var(--uncontrolled-border);
+}
+
+/* Submit Button */
+.submit-btn {
+  border: none;
+  background-color: var(--submit-btn-bg);
+  padding: var(--submit-btn-padding);
+  color: var(--submit-btn-color);
+  border-radius: var(--submit-btn-radius);
+  transition: var(--submit-btn-transition);
+  margin-bottom: 10px;
+}
+
+.submit-btn:hover {
+  background-color: var(--submit-btn-hover-bg);
+  color: var(--submit-btn-hover-color);
+  border: 1px solid var(--submit-btn-bg);
+}
+
+/* Messages */
+.success {
+  color: var(--success-color);
+  background-color: var(--message-bg);
+  width: fit-content;
+  padding: var(--message-padding);
+  border-radius: var(--message-radius);
+}
+
+.error {
+  color: var(--error-color);
+  background-color: var(--message-bg);
+  width: fit-content;
+  padding: var(--message-padding);
+  border-radius: var(--message-radius);
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .toolbar {
+    flex-wrap: wrap;
+  }
+  .toolbar-button {
+    flex: 1 1 45%;
+  }
+}
