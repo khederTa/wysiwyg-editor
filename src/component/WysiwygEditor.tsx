@@ -38,19 +38,7 @@ const WysiwygEditor: React.FC<WysiwygEditorProps> = ({
     [onChange]
   );
 
-  const handleKeyCommand = useCallback(
-    (command: string, editorState: EditorState) => {
-      const newState = RichUtils.handleKeyCommand(editorState, command);
-
-      if (newState) {
-        handleEditorChange(newState);
-        return "handled";
-      }
-
-      return "not-handled";
-    },
-    [handleEditorChange]
-  );
+  
 
   const keyBindingFn = useCallback((e: React.KeyboardEvent) => {
     if (KeyBindingUtil.hasCommandModifier(e)) {
@@ -117,7 +105,6 @@ const WysiwygEditor: React.FC<WysiwygEditorProps> = ({
         <Editor
           editorState={editorState}
           onChange={handleEditorChange}
-          handleKeyCommand={handleKeyCommand}
           keyBindingFn={keyBindingFn}
         />
       </div>
