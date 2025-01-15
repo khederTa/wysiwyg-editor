@@ -16,7 +16,7 @@ const App: React.FC = () => {
     editorContainer: {
       border: "2px solid #999",
       borderRadius: "8px",
-      marginBottom: "10px"
+      marginBottom: "10px",
     },
     submitButton: {
       backgroundColor: "#555",
@@ -48,6 +48,7 @@ const App: React.FC = () => {
             padding: "10px",
             marginTop: "20px",
           }}
+          renderToolbar={() => <>Custom Toolbar</>}
         />
       </section>
     </div>
